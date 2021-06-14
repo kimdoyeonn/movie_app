@@ -5,6 +5,10 @@ class App extends React.Component {
   state = {
     count: 0,
   };
+  constructor({ prop }) {
+    super(prop);
+    console.log("constructor");
+  }
   add = () => {
     this.setState((current) => ({
       count: current.count + 1,
@@ -17,6 +21,8 @@ class App extends React.Component {
   };
 
   render() {
+    console.log("render");
+
     return (
       <div>
         <h1>The number is: {this.state.count}</h1>
@@ -24,6 +30,15 @@ class App extends React.Component {
         <button onClick={this.minus}>Minus</button>
       </div>
     );
+  }
+  componentDidMount() {
+    console.log("componentDidMount");
+  }
+  componentDidUpdate() {
+    console.log("componentDidUpdate");
+  }
+  componentWillUnmount() {
+    console.log("Bye~!");
   }
 }
 
