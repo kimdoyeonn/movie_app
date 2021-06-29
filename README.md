@@ -83,3 +83,28 @@ export default Navigation;
 - HashRouter 말고도 BrowserRouter가 있다. BrowserRouter는 url에 `/#/` 가 붙지 않아 깔끔하지만, github pages에 정확히 설정하기 번거롭기 때문에 github pages에 업로드하고 싶을 경우엔 HashRouter를 사용하는 것이 좋다.
 
 ### #6.3 Sharing Props Between Routes
+
+영화에 대한 상세설명을 보여줄 페이지 `Detail.js`를 만들어주고, Detail로 Home에서 가지고 있던 영화에 대한 props를 넘겨줌
+
+- Link 태그의 to는 문자열 뿐만 아니라 객체를 넘길 수 있다.
+
+```javascript
+function Movie({ year, title, summary, poster, genres }) {
+  return (
+    <Link
+      to={{
+        pathname: "/movie-detail",
+        state: {
+          year,
+          title,
+          summary,
+          poster,
+          genres,
+        },
+      }}
+    >
+    ...
+```
+
+- Link 태그의 to를 통해서 Movie 컴포넌트가 가지고 있는 모든 값들을 Detail로 전달해줌
+- Detail에서 props를 출력해보면 location.state에 값이 잘 넘어온 것을 확인할 수 있음
