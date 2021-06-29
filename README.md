@@ -108,3 +108,53 @@ function Movie({ year, title, summary, poster, genres }) {
 
 - Link 태그의 to를 통해서 Movie 컴포넌트가 가지고 있는 모든 값들을 Detail로 전달해줌
 - Detail에서 props를 출력해보면 location.state에 값이 잘 넘어온 것을 확인할 수 있음
+
+---
+
+### #6.4 Redirecting
+
+```javascript
+class Detail extends React.Component {
+  componentDidMount() {
+    const { location, history } = this.props;
+    // if (location.state === undefined) {
+    history.push("/");
+    // }
+  }
+  render() {
+    const { location } = this.props;
+    if (location.state) {
+      return <span>{location.state.title}</span>;
+    } else {
+      return null;
+    }
+  }
+}
+```
+
+`/movie-detail`로 이동할 경우 클릭한 영화정보를 가져와서 화면에 보여줄 수 있음
+만약 클릭을 통한 이동이 아니라 url로 이동할 경우 넘어온 정보가 없으므로 화면에 보여줄 수 없다. 때문에 해당 값이 `undefined` 일 경우 `/`로 리다이렉트 해줌
+
+- redirect는 props의 history에 push를 사용하면 된다.
+  그런데 redirect를 하기 위한 코드가 적힌 `componentDidMount`가 `render` 이후에 실행되므로 이대로 화면에 출력할 경우 state가 존재하지 않기 때문에 오류를 발생시킴
+- `render`에서도 `state` 값이 존재하는지 확인 후 return을 해줘야한다.
+
+```javascript
+// App.js
+<Route path="/movie/:id" component={Detail} />
+
+// Movie.js
+<Link to={{
+    pathname: `/movie/${id}`,
+    state: {
+      year,
+      title,
+      summary,
+      poster,
+      genres,
+    },
+  }}
+>
+```
+
+- Route path에 `:변수` 형태로 입력하면 값에 따라 url이 달라지는 형태로 설정할 수 있다.
