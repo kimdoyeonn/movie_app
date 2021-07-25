@@ -16,6 +16,14 @@ body {
   height: 100%;
 }
 
+html,
+body,
+#potato {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 `;
 
 export default GlobalStyles;
