@@ -1,3 +1,8 @@
+import { createGlobalStyle } from "styled-components";
+import reset from "styled-reset";
+
+const GlobalStyles = createGlobalStyle`
+${reset}
 * {
   box-sizing: border-box;
 }
@@ -10,3 +15,7 @@ body {
   background-color: #eff3f7;
   height: 100%;
 }
+
+`;
+
+export default GlobalStyles;
