@@ -2,6 +2,13 @@
 
 React JS Fundamentals Course (2019 Upate!)
 
+- [Route](#route)
+  - [#6.0 Getting Ready for the Router](#-60-getting-ready-for-the-router)
+  - [#6.1 Building the Router](#-61-building-the-router)
+  - [#6.2 Building the Navigation](#-62-building-the-navigation)
+  - [#6.3 Sharing Props Between Routes](#-63-sharing-props-between-routes)
+  - [#6.4 Redirecting](#-64-redirecting)
+
 ## Route
 
 ### #6.0 Getting Ready for the Router
